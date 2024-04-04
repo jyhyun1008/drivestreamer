@@ -1,0 +1,110 @@
+@font-face {
+    font-family: 'seolleimcool-SemiBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/seolleimcool-SemiBold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --accent: #ececec22;
+    --bg: #222238;
+    --grey: #ececec;
+    --lightbg: color-mix(in srgb, var(--bg) 60%, grey);
+    --darkaccent: color-mix(in srgb, var(--accent) 70%, #000);
+    --lightaccent: color-mix(in srgb, var(--accent) 60%, #fff);
+}
+
+body {
+    margin: 0;
+    font-family: 'seolleimcool-SemiBold';
+    background-color: var(--bg);
+    color: white;
+}
+
+#wrapper {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+#title {
+    text-align: center;
+}
+
+.justText {
+    margin-bottom:10px;
+}
+
+.justText span {
+    color: skyblue;
+}
+
+#player {
+    margin: 10px;
+    width: calc(100% - 20px);
+    background-color: var(--accent);
+    height: 40px;
+    border-radius: 20px;
+    display: flex;
+    gap: 12px;
+    align-items: stretch;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#player > div, #playbar > div {
+    border-radius: 40px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+}
+
+#player > div {
+    flex-grow: 1;
+}
+
+#player #volume {
+    max-width: 200px;
+    width: calc(100% - 50px);
+}
+
+.rangeInput {
+    height: 8px;
+    background: var(--grey);
+    border-radius: 8px;
+    outline: none;
+    transition: background 450ms ease-in;
+    -webkit-appearance: none;
+    accent-color: var(--lightaccent);
+}
+
+#playbar {
+    margin: 10px;
+    width: calc(100% - 20px);
+    display:flex;
+    height: 80px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--accent);
+    border-radius: 40px;
+    margin-bottom: 20px;
+}
+
+#duration {
+    width: calc(100vw - 300px);
+    max-width: 400px;
+}
+
+i {
+    font-size: 2em;
+}
+
+embed {
+    border-radius: 25px;
+    width: calc(100% - 20px);
+    margin: 10px;
+    height: calc(100dvh - 300px);
+}
