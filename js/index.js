@@ -23,7 +23,7 @@ var sPlayList = []
 var audioplayer
 var isShuffle = false
 var isPlaying = false
-var isLoop = false
+var isLoop = true
 var volume = 1;
 var currentPlaying = {}
 
