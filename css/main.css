@@ -39,6 +39,12 @@ body {
     color: skyblue;
 }
 
+#musicTitle {
+    width: calc(100% - 20px);
+    margin: 10px;
+    text-align: center;
+}
+
 #player {
     margin: 10px;
     width: calc(100% - 20px);
@@ -52,7 +58,7 @@ body {
     margin-bottom: 20px;
 }
 
-#player > div, #playbar > div {
+#player > div, #playbar > div, #form > div {
     border-radius: 40px;
     padding: 20px;
     text-align: center;
@@ -98,13 +104,46 @@ body {
     max-width: 400px;
 }
 
+#pdf-box {
+    width: calc(100% - 20px);
+    margin: 10px;
+}
+
+#form {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+#form input {
+    flex-grow: 1;
+    border-radius: 40px;
+}
+
+#form > div {
+    background-color: var(--accent);
+}
+
+.listUrl {
+    display: flex;
+    border-bottom: 1px solid white;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.listDelete {
+    background-color: var(--accent);
+    border-radius: 20px;
+}
+
 i {
     font-size: 2em;
 }
 
 embed {
+    width: 100%;
     border-radius: 25px;
-    width: calc(100% - 20px);
-    margin: 10px;
     height: calc(100dvh - 300px);
 }
