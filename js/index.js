@@ -266,7 +266,7 @@ addEventListener("DOMContentLoaded", (event) => {
 
                     document.querySelector("#player-box").innerHTML = '<audio style="display:none;" ></audio><div id="musicTitle"></div><div id="playbar"><div id="playTime"></div><div><input type="range" id="duration" class="rangeInput" name="duration" min="0" max="100" value="0" /></div><div id="totTime"></div></div><div id="player"><div class="playButton"><i class="bx bx-play" ></i></div><div class="stopButton"><i class="bx bx-stop" ></i></div><div class="loopButton"><i class="bx bx-revision" style="color:#ff9899;" ></i></div><div class="shuffleButton"><i class="bx bx-shuffle" ></i></div><div><label for="volume"><i class="bx bxs-megaphone" ></i> </label><input type="range" class="rangeInput" id="volume" name="volume" min="0" max="100" value="100" /></div></div></div>'
 
-                    document.querySelector("#pdf-box").innerHTML = '<div id="form"><input type="text" class="textInput" id="addUrl" placeholder="재생목록에 추가할 음원 URL" /><input type="text" class="textInput" id="addTitle" placeholder="구분할 수 있는 제목" /><div id="addList">추가</div></div><div id="playList"></div>'
+                    document.querySelector("#pdf-box").innerHTML = '<div id="playList"></div>'
 
                     for (let i = 0; i<playList.length; i++) {
                         document.querySelector("#playList").innerHTML +='<div class="listUrl"><div class="listTitle" id="title'+i+'">'+playList[i].title+'</div></div>'
@@ -314,22 +314,6 @@ addEventListener("DOMContentLoaded", (event) => {
                     }
 
                     deleteEvent()
-
-                    document.querySelector('#addList').addEventListener("click", function () {
-                        playList.push({title: addTitle.value, url: addUrl.value})
-                        document.querySelector("#playList").innerHTML = ''
-                        deleteEvent();
-                        console.log(playList)
-                        if (playList.length == 1) {
-                            document.querySelector("#musicTitle").innerText = playList[0].title
-                            audioplayer.src = playList[0].url
-                            audioplayer.loop = isLoop
-                            audioplayer.volume = volume
-                            audioplayer.play()
-                            currentPlaying = playList[0]
-                            isPlaying = true
-                        }
-                    })
 
                     document.querySelector('.shuffleButton').addEventListener("click", function () {
                         if (isShuffle) {
