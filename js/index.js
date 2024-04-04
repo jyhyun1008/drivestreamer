@@ -74,7 +74,6 @@ addEventListener("DOMContentLoaded", (event) => {
 
                 for (let i = 0; i<playList.length; i++) {
                     document.querySelector("#playList").innerHTML +='<div class="listUrl"><div class="listTitle" id="title'+i+'">'+playList[i].title+'</div><div class="listDelete" id="delete'+i+'"><i class="bx bx-x"></i></div></div>'
-                    console.log(i)
                 }
 
                 var addUrl = document.querySelector('#addUrl')
@@ -94,7 +93,6 @@ addEventListener("DOMContentLoaded", (event) => {
                 const deleteEvent = async () => {
                     const playListTitle = Array.from(document.getElementsByClassName('listTitle'))
                     const playListDelete = Array.from(document.getElementsByClassName('listDelete'))
-                    console.log(playListTitle)
                     const addPlayOnList = (play) => {
                         return new Promise((resolve, reject) => {
                             play.addEventListener("click", function () {
@@ -143,8 +141,10 @@ addEventListener("DOMContentLoaded", (event) => {
                 document.querySelector('#addList').addEventListener("click", function () {
                     playList.push({title: addTitle.value, url: addUrl.value})
                     document.querySelector("#playList").innerHTML = ''
+                    for (let i = 0; i<playList.length; i++) {
+                        document.querySelector("#playList").innerHTML +='<div class="listUrl"><div class="listTitle" id="title'+i+'">'+playList[i].title+'</div><div class="listDelete" id="delete'+i+'"><i class="bx bx-x"></i></div></div>'
+                    }
                     deleteEvent();
-                    console.log(playList)
                     localStorage.setItem('playList', JSON.stringify(playList))
                     if (playList.length == 1) {
                         document.querySelector("#musicTitle").innerText = playList[0].title
@@ -279,7 +279,6 @@ addEventListener("DOMContentLoaded", (event) => {
         fetch(list, {mode: 'no-cors'})
         .then(res => res.text())
         .then((out) => {
-            console.log(out)
             out = out.split('\n')
             for (var i=0; i<out.length; i++) {
                 if (out[i] != '') {
@@ -297,7 +296,6 @@ addEventListener("DOMContentLoaded", (event) => {
 
                     for (let i = 0; i<playList.length; i++) {
                         document.querySelector("#playList").innerHTML +='<div class="listUrl"><div class="listTitle" id="title'+i+'">'+playList[i].title+'</div></div>'
-                        console.log(i)
                     }
 
                     var addUrl = document.querySelector('#addUrl')
@@ -316,7 +314,6 @@ addEventListener("DOMContentLoaded", (event) => {
 
                     const deleteEvent = async () => {
                         const playListTitle = Array.from(document.getElementsByClassName('listTitle'))
-                        console.log(playListTitle)
                         const addPlayOnList = (play) => {
                             return new Promise((resolve, reject) => {
                                 play.addEventListener("click", function () {
