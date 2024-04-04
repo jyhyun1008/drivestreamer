@@ -267,7 +267,7 @@ addEventListener("DOMContentLoaded", (event) => {
                     document.querySelector("#pdf-box").innerHTML = '<div id="form"><input type="text" class="textInput" id="addUrl" placeholder="재생목록에 추가할 음원 URL" /><input type="text" class="textInput" id="addTitle" placeholder="구분할 수 있는 제목" /><div id="addList">추가</div></div><div id="playList"></div>'
 
                     for (let i = 0; i<playList.length; i++) {
-                        document.querySelector("#playList").innerHTML +='<div class="listUrl"><div class="listTitle" id="title'+i+'">'+playList[i].title+'</div><div class="listDelete" id="delete'+i+'"><i class="bx bx-x"></i></div></div>'
+                        document.querySelector("#playList").innerHTML +='<div class="listUrl"><div class="listTitle" id="title'+i+'">'+playList[i].title+'</div></div>'
                         console.log(i)
                     }
 
@@ -287,7 +287,6 @@ addEventListener("DOMContentLoaded", (event) => {
 
                     const deleteEvent = async () => {
                         const playListTitle = Array.from(document.getElementsByClassName('listTitle'))
-                        const playListDelete = Array.from(document.getElementsByClassName('listDelete'))
                         console.log(playListTitle)
                         const addPlayOnList = (play) => {
                             return new Promise((resolve, reject) => {
@@ -306,27 +305,8 @@ addEventListener("DOMContentLoaded", (event) => {
                                 resolve()
                             })
                         }
-                        const addDeleteOnList = (play) => {
-                            return new Promise((resolve, reject) => {
-                                play.addEventListener("click", function () {
-                                    if(confirm("정말 삭제하시겠습니까?")){
-                                        var i = play.id.split('delete')[1]
-                                        playList.splice(i, 1)
-                                        document.querySelector("#playList").innerHTML = ''
-                                        deleteEvent();
-                                    }else{
-                                        alert("취소하였습니다.");
-                                    }
-                                })
-                                
-                                resolve()
-                            })
-                        }
                         for await (let play of playListTitle) {
                             await addPlayOnList(play)
-                        }
-                        for await (let play of playListDelete) {
-                            await addDeleteOnList(play)
                         }
         
                     }
