@@ -138,6 +138,10 @@ body {
     border-radius: 20px;
 }
 
+.listTitle {
+    padding: 7px;
+}
+
 i {
     font-size: 2em;
 }

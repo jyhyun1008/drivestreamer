@@ -255,8 +255,10 @@ addEventListener("DOMContentLoaded", (event) => {
             console.log(out)
             out = out.split('\n')
             for (var i=0; i<out.length; i++) {
-                out[i] = out[i].split(',')
-                playList.push({title: out[i][0], url: out[i][1]})
+                if (out[i] != '') {
+                    out[i] = out[i].split(',')
+                    playList.push({title: out[i][0], url: out[i][1]})
+                }
             }
 
             document.querySelector('body').addEventListener("click", function () {
