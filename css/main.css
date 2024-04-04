@@ -1,6 +1,6 @@
 @font-face {
-    font-family: 'seolleimcool-SemiBold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/seolleimcool-SemiBold.woff2') format('woff2');
+    font-family: 'ONE-Mobile-POP';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -16,7 +16,7 @@
 
 body {
     margin: 0;
-    font-family: 'seolleimcool-SemiBold';
+    font-family: 'ONE-Mobile-POP';
     background-color: var(--bg);
     color: white;
 }
@@ -58,7 +58,7 @@ body {
     margin-bottom: 20px;
 }
 
-#player > div, #playbar > div, #form > div {
+#player > div, #playbar > div, .form div {
     border-radius: 40px;
     padding: 20px;
     text-align: center;
@@ -109,7 +109,7 @@ body {
     margin: 10px;
 }
 
-#form {
+.form {
     display: flex;
     justify-content: space-between;
     gap: 12px;
@@ -117,13 +117,14 @@ body {
     margin-bottom: 20px;
 }
 
-#form input {
+.form input {
     flex-grow: 1;
     border-radius: 40px;
 }
 
-#form > div {
+.form div {
     background-color: var(--accent);
+    padding: calc(20px - 0.5em) 20px;
 }
 
 .listUrl {
@@ -144,6 +145,11 @@ body {
 
 i {
     font-size: 2em;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 embed {

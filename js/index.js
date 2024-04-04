@@ -20,7 +20,34 @@ var list = qs.list
 
 addEventListener("DOMContentLoaded", (event) => {
     if (!audio && !list) {
-        document.querySelector('#player-box').innerHTML = "<div class='justText'>https://player.peacht.art/<span>?a={audio-url}&p={pdf-url}</span></div><div class='justText'>위 URL로 접속하시면 온라인상의 아무 음원(일단 미스키 드라이브에 있는 건 가능)이나 플레이어로 감싸서 + 악보와 함께 듣거나 공유하실 수 있습니다.</div><p></p><div class='justText'>https://player.peacht.art/<span>?list=local</span></div><div class='justText'>위 URL로 접속하시면 온라인상의 음원만으로 구성된 로컬 플레이리스트를 만드실 수 있습니다.</div><p></p><div class='justText'>https://player.peacht.art/<span>?list={list-textfile-url}</span></div><div class='justText'>위 URL로 접속하시면 다른 사람과 공유된 리스트에 접근하실 수 있습니다.</div>"
+        document.querySelector('#player-box').innerHTML = "<h2>로컬 플레이리스트</h2>"
+        document.querySelector('#player-box').innerHTML += "<div class='justText'>https://player.peacht.art/<span>?list=local</span></div><div class='justText'>"
+        document.querySelector('#player-box').innerHTML += "<div class='form'><a href='./?list=local'><div id='goLocalList'>바로가기</div></a></div>"
+        document.querySelector('#player-box').innerHTML += "위 URL로 접속하시면 온라인상의 음원만으로 구성된 로컬 플레이리스트를 만드실 수 있습니다.</div>"
+        document.querySelector('#player-box').innerHTML += "<h2>리모트 플레이리스트</h2>"
+        document.querySelector('#player-box').innerHTML += "<p></p><div class='justText'>https://player.peacht.art/<span>?list={리스트 주소}</span></div>"
+        document.querySelector('#player-box').innerHTML += "<div class='form'><input type='text' class='textInput' id='addListUrl' placeholder='리스트 주소' /><a href='./' id='goRemoteList'><div>바로가기</div></a></div>"
+        document.querySelector('#player-box').innerHTML += "<div class='justText'>위 URL로 접속하시면 다른 사람과 공유된 리스트에 접근하실 수 있습니다.</div>"
+        document.querySelector('#player-box').innerHTML += "<h2>악보 모니터링</h2>"
+        document.querySelector('#player-box').innerHTML += "<p></p><div class='justText'>https://player.peacht.art/<span>?a={오디오 파일 주소}&p={악보 PDF 주소}</span></div>"
+        document.querySelector('#player-box').innerHTML += "<div class='form'><input type='text' class='textInput' id='addAudio' placeholder='오디오 파일 주소' /><input type='text' class='textInput' id='addPdf' placeholder='악보 PDF 주소' /><a href='./' id='goPlayer'><div>바로가기</div></a></div>"
+        document.querySelector('#player-box').innerHTML += "<div class='justText'>위 URL로 접속하시면 온라인상의 아무 음원(일단 미스키 드라이브에 있는 건 가능)이나 플레이어로 감싸서 + 악보와 함께 듣거나 공유하실 수 있습니다.</div>"
+
+        document.querySelector('#addListUrl').addEventListener("change", (event) => {
+            var qs0 = document.querySelector('#addListUrl').value
+            document.querySelector('#goRemoteList').setAttribute("href", './?list='+qs0)
+        })
+        document.querySelector('#addAudio').addEventListener("change", (event) => {
+            var qs1 = document.querySelector('#addAudio').value
+            var qs2 = document.querySelector('#addPdf').value
+            document.querySelector('#goPlayer').setAttribute("href", './?a='+qs1+'&p='+qs2)
+        })
+        document.querySelector('#addPdf').addEventListener("change", (event) => {
+            var qs1 = document.querySelector('#addAudio').value
+            var qs2 = document.querySelector('#addPdf').value
+            document.querySelector('#goPlayer').setAttribute("href", './?a='+qs1+'&p='+qs2)
+        })
+
     } else if (list == 'local') {
         var playList = [] //json
         if (localStorage.getItem('playList')) {
@@ -43,7 +70,7 @@ addEventListener("DOMContentLoaded", (event) => {
 
                 document.querySelector("#player-box").innerHTML = '<audio style="display:none;" ></audio><div id="musicTitle"></div><div id="playbar"><div id="playTime"></div><div><input type="range" id="duration" class="rangeInput" name="duration" min="0" max="100" value="0" /></div><div id="totTime"></div></div><div id="player"><div class="playButton"><i class="bx bx-play" ></i></div><div class="stopButton"><i class="bx bx-stop" ></i></div><div class="loopButton"><i class="bx bx-revision" style="color:#ff9899;" ></i></div><div class="shuffleButton"><i class="bx bx-shuffle" ></i></div><div><label for="volume"><i class="bx bxs-megaphone" ></i> </label><input type="range" class="rangeInput" id="volume" name="volume" min="0" max="100" value="100" /></div></div></div>'
 
-                document.querySelector("#pdf-box").innerHTML = '<div id="form"><input type="text" class="textInput" id="addUrl" placeholder="재생목록에 추가할 음원 URL" /><input type="text" class="textInput" id="addTitle" placeholder="구분할 수 있는 제목" /><div id="addList">추가</div></div><div id="playList"></div>'
+                document.querySelector("#pdf-box").innerHTML = '<div class="form"><input type="text" class="textInput" id="addUrl" placeholder="재생목록에 추가할 음원 URL" /><input type="text" class="textInput" id="addTitle" placeholder="구분할 수 있는 제목" /><div id="addList">추가</div></div><div id="playList"></div>'
 
                 for (let i = 0; i<playList.length; i++) {
                     document.querySelector("#playList").innerHTML +='<div class="listUrl"><div class="listTitle" id="title'+i+'">'+playList[i].title+'</div><div class="listDelete" id="delete'+i+'"><i class="bx bx-x"></i></div></div>'
