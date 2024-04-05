@@ -393,6 +393,6 @@ addEventListener("DOMContentLoaded", (event) => {
         })
     }
     if (pdf) { 
-        document.querySelector('#pdf-box').innerHTML = '<embed class="pdf" src="'+pdf+'" type="application/pdf" />'
+        document.querySelector('#pdf-box').innerHTML = '<object><embed class="pdf" src="'+pdf+'" type="application/pdf" /></object>'
     }
 })
