@@ -393,6 +393,6 @@ addEventListener("DOMContentLoaded", (event) => {
         })
     }
     if (pdf) { 
-        document.querySelector('#pdf-box').innerHTML = '<object><embed class="pdf" src="'+pdf+'" type="application/pdf" /></object>'
+        document.querySelector('#pdf-box').innerHTML = '<object data="'+pdf+'" type="application/pdf" class="pdf"><iframe src="'+pdf+'" style="border: none;" class="pdf">This browser does not support PDFs. Please download the PDF to view it: <a href="'+pdf+'">Download PDF</a></iframe></object>'
     }
 })
