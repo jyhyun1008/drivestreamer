@@ -194,6 +194,7 @@ addEventListener("DOMContentLoaded", (event) => {
         })
 
     } else if (list == 'local') {
+        
         if (localStorage.getItem('playList')) {
             playList = JSON.parse(localStorage.getItem('playList'))
             sPlayList = playList
@@ -226,7 +227,6 @@ addEventListener("DOMContentLoaded", (event) => {
                     document.querySelector("#musicTitle").innerText = playList[0].title
                     document.querySelector(".playButton").innerHTML = "<i class='bx bx-pause'></i>"
                     audioplayer.src = playList[0].url
-                    audioplayer.loop = isLoop
                     audioplayer.volume = volume
                     audioplayer.play()
                     currentPlaying = playList[0]
@@ -288,7 +288,6 @@ addEventListener("DOMContentLoaded", (event) => {
                         document.querySelector("#musicTitle").innerText = playList[0].title
                         document.querySelector(".playButton").innerHTML = "<i class='bx bx-pause'></i>"
                         audioplayer.src = playList[0].url
-                        audioplayer.loop = isLoop
                         audioplayer.volume = volume
                         audioplayer.play()
                         currentPlaying = playList[0]
@@ -334,7 +333,6 @@ addEventListener("DOMContentLoaded", (event) => {
                         document.querySelector("#musicTitle").innerText = playList[0].title
                         document.querySelector(".playButton").innerHTML = "<i class='bx bx-pause'></i>"
                         audioplayer.src = playList[0].url
-                        audioplayer.loop = isLoop
                         audioplayer.volume = volume
                         audioplayer.play()
                         currentPlaying = playList[0]
