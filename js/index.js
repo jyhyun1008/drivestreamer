@@ -16,6 +16,7 @@ function getQueryStringObject() {
 var qs = getQueryStringObject()
 var audio = qs.a
 var pdf = qs.p
+var sheet = qs.s
 var list = qs.list
 
 var playList = [] //json
@@ -48,6 +49,12 @@ const playBarContoller = function () {
             let ctTime = parseInt(audioplayer.currentTime)
             // 프로그레스 바 업데이트
             timeBar.value = `${ctTime / tick}`
+            if (pdf && sheet) {
+                var pdfHeight = (document.querySelector('.pdf').offsetWidth - 15) * 1.41 * sheet
+                document.querySelector('.pdf').style="height: "+pdfHeight+"px;"
+                var ctHeight = Math.max(ctTime / duration * pdfHeight - (document.querySelector('#pdf-box').offsetHeight)/2, 0)
+                document.querySelector('#pdf-box').scrollTo(0,ctHeight)
+            }
 
             let min = Math.floor(ctTime / 60);
             let sec = Math.floor(ctTime % 60);
@@ -391,6 +398,10 @@ addEventListener("DOMContentLoaded", (event) => {
         })
     }
     if (pdf) { 
-        document.querySelector('#pdf-box').innerHTML = '<object data="'+pdf+'" type="application/pdf" class="pdf" ><iframe src="'+pdf+'" style="border: none;" class="pdf" >This browser does not support PDFs. Please download the PDF to view it: <a href="'+pdf+'">Download PDF</a></iframe></object>'
+        document.querySelector('#pdf-box').innerHTML = '<iframe src="'+pdf+'" style="border: none;" class="pdf" >This browser does not support PDFs. Please download the PDF to view it: <a href="'+pdf+'">Download PDF</a></iframe>'
+        var pdfFrame = document.querySelector('.pdf');
+        pdfFrame.onload = function () {
+            pdfFrame.contentWindow.scrollTo(0,100);
+        }
     }
 })
