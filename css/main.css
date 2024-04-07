@@ -111,7 +111,7 @@ body {
 #pdf-box {
     width: calc(100% - 20px);
     margin: 10px;
-    height: calc(100dvh - 300px);
+    height: calc(100dvh - 250px);
     overflow-x: hidden;
     overflow-y: scroll;
 }
@@ -166,5 +166,5 @@ a {
 .pdf {
     width: 100%;
     border-radius: 25px;
-    height: calc(100dvh - 300px);
+    height: calc(100dvh - 250px);
 }
